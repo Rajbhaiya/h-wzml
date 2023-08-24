@@ -5,7 +5,7 @@ YT_HELP_MESSAGE = ["""<i>Send links/files along with cmd or reply to cmd to mirr
 
 ➲ <b><u>Available Args</u></b>:
 
-1.  <b>-n or -name :</b> Rename file.
+1.  <b>| or -n :</b> Rename file.
 2.  <b>-z or -zip :</b> Zip files or Links
 3.  <b>-up or -upload :</b> Upload to your Drive or RClone or DDL
 4.  <b>-b or -bulk :</b> Download bulk links.
@@ -102,7 +102,7 @@ MIRROR_HELP_MESSAGE = ["""<i>Send links/files along with cmd or reply to cmd to 
 
 ➲ <b><u>Available Args</u></b>:
 
-1.  <b>-n or -name :</b> Rename file.
+1.  <b>| or -n :</b> Rename file.
 2.  <b>-z or -zip :</b> Zip files or Links
 3.  <b>-e or -extract or -uz or -unzip :</b> Extract/Unzip files from Archive
 4.  <b>-up or -upload :</b> Upload to your Drive or RClone or DDL
@@ -190,9 +190,9 @@ Bulk can be used by text message and by replying to text file contains links sep
 You can use it only by reply to message(text/file).
 All options should be along with link!
 <b>Some Examples:</b>
-link1 -n new name -up remote1:path1 -rcf |key:value|key:value
-link2 -z -n new name -up remote2:path2
-link3 -uz -n new name -up remote2:path2
+link1 | new name -up remote1:path1 -rcf |key:value|key:value
+link2 -z | new name -up remote2:path2
+link3 -uz | new name -up remote2:path2
 <b>NOTES:</b> You can't add -m arg for some links only, do it for all links or use multi without bulk!
 Reply to this example by this cmd <code>/cmd</code> -b(bulk)
 You can set start and end of the links from the bulk like seed, with -b start:end or only end by -b :end or only start by -b start. The default start is from zero(first link) to inf.

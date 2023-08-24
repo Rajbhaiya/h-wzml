@@ -134,8 +134,9 @@ class YtSelection:
                             ext = item['ext']
                             fps = item['fps'] if item.get('fps') else ''
                             b_name = f'{height}p{fps}-{ext}'
-                            ba_ext = '[ext=m4a]' if self.__is_m4a and ext == 'mp4' else ''
-                            v_format = f'bv*[format_id={format_id}]+ba{ba_ext}/b[height=?{height}]'
+                            if ext == 'mp4':
+                                ba_ext = '[ext=m4a]' if is_m4a else ''
+                                v_format = f"bv*[format_id={format_id}]+ba{ba_ext}/b[height=?{height}]"
                             else:
                                 v_format = f"bv*[format_id={format_id}]+ba/b[height=?{height}]"
                         else:

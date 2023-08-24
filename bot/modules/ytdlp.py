@@ -134,11 +134,8 @@ class YtSelection:
                             ext = item['ext']
                             fps = item['fps'] if item.get('fps') else ''
                             b_name = f'{height}p{fps}-{ext}'
-                            if ext == 'mp4':
-                                ba_ext = '[ext=m4a]' if is_m4a else ''
-                                v_format = f"bv*[format_id={format_id}]+ba{ba_ext}/b[height=?{height}]"
-                            else:
-                                v_format = f"bv*[format_id={format_id}]+ba/b[height=?{height}]"
+                            ba_ext = '[ext=m4a]' if self.__is_m4a and ext == 'mp4' else ''
+                            v_format = f'bv*[format_id={format_id}]+ba{ba_ext}/b[height=?{height}]'
                         else:
                             continue
 
@@ -253,7 +250,7 @@ async def _ytdl(client, message, isLeech=False, sameDir=None, bulk=[]):
                 '-s': False, '-select': False,
                 '-opt': '', '-options': '',
                 '-b': False, '-bulk': False,
-                '|': '', '-n': '',
+                '-n': '', '-name': '',
                 '-z': False, '-zip': False,
                 '-up': '', '-upload': False,
                 '-rcf': '',
@@ -275,7 +272,7 @@ async def _ytdl(client, message, isLeech=False, sameDir=None, bulk=[]):
     isBulk      = args['-b'] or args['-bulk']
     opt         = args['-opt'] or args['-options']
     folder_name = args['-m'] or args['-sd'] or args['-samedir']
-    name        = args['|'] or args['-n']
+    name        = args['-n'] or args['-name']
     up          = args['-up'] or args['-upload']
     rcf         = args['-rcf']
     link        = args['link']
@@ -463,7 +460,7 @@ async def _ytdl(client, message, isLeech=False, sameDir=None, bulk=[]):
     if 'mdisk.me' in link:
         name, link = await _mdisk(link, name)
 
-    options = {'usenetrc': True}
+    options = {'usenetrc': True, 'cookiefile': 'cookies.txt'}
     if opt:
         yt_opt = opt.split('|')
         for ytopt in yt_opt:

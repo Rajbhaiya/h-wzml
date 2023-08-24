@@ -136,8 +136,8 @@ class YtSelection:
                             b_name = f'{height}p{fps}-{ext}'
                             ba_ext = '[ext=m4a]' if self.__is_m4a and ext == 'mp4' else ''
                             v_format = f'bv*[format_id={format_id}]+ba{ba_ext}/b[height=?{height}]'
-                        else:
-                            v_format = f"bv*[format_id={format_id}]+ba/b[height=?{height}]"
+                            else:
+                                v_format = f"bv*[format_id={format_id}]+ba/b[height=?{height}]"
                         else:
                             continue
 
